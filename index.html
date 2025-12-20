@@ -15,6 +15,7 @@
 <body>
 
 <header class="header">
+
   <div class="container nav">
     <h1 class="logo">David Mould</h1>
     <nav>
@@ -25,6 +26,9 @@
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
+    <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+      <i class="fas fa-moon"></i>
+    </button>
   </div>
 </header>
 
@@ -41,17 +45,49 @@
 <section id="about" class="section">
   <div class="container">
     <h2>About Me</h2>
+
     <p>
       I currently work remotely as a Consultant Football Watcher for Smartodds,
       analysing live football matches and collecting detailed event and tactical data
       to support real-time decision-making.
     </p>
+
     <p>
-      This website serves as a personal scouting portfolio, where I document
-      player-focused match reports and observational analysis.
+      Alongside my live match work, I am developing a structured scouting portfolio
+      focused on individual player performance, tactical understanding, and off-ball contribution.
     </p>
+
+    <div class="about-divider"></div>
+
+    <h3 class="subheading">Leagues Covered</h3>
+    <p class="section-intro">
+      Competitions analysed as part of my professional match analysis work.
+    </p>
+
+    <div class="leagues-grid">
+      <div class="league-card">
+        <span class="league-country">Germany</span>
+        <h4>2. Bundesliga</h4>
+      </div>
+
+      <div class="league-card">
+        <span class="league-country">Italy</span>
+        <h4>Serie B</h4>
+      </div>
+
+      <div class="league-card">
+        <span class="league-country">England</span>
+        <h4>EFL Championship</h4>
+      </div>
+
+      <div class="league-card">
+        <span class="league-country">South Korea</span>
+        <h4>K League</h4>
+      </div>
+    </div>
   </div>
 </section>
+
 
 <section id="approach" class="section section-alt">
   <div class="container">
@@ -66,6 +102,7 @@
     </ul>
   </div>
 </section>
+
 
 <section id="reports" class="section">
   <div class="container">
@@ -114,6 +151,6 @@
 <footer class="footer">
   <p>&copy; 2025 David Mould — Football Scouting Portfolio</p>
 </footer>
-
+ <script src="script.js"></script>
 </body>
 </html>

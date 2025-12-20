@@ -1,0 +1,276 @@
+/* =========================
+   RESET
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =========================
+   DEFAULT THEME — INK WASH
+========================= */
+:root {
+  --bg-main: #f8fafc;
+  --bg-alt: #e5e7eb;
+
+  --text-main: #111827;
+  --text-muted: #4b5563;
+
+  --accent-primary: #1f2937;  
+  --accent-secondary: #020617;
+
+  --accent-kiwi: #7cff00;      
+  --border-color: #cbd5e1;
+  --hero-bg: var(--bg-main);
+  --hero-text: var(--text-main);
+  --hero-subtext: var(--text-muted);
+}
+/* =========================
+   THEME: DARK (simple light/dark toggle)
+========================= */
+body.dark {
+  --bg-main: #0b1220;
+  --bg-alt: #0f1724;
+  --text-main: #e6eef8;
+  --text-muted: #9ca3af;
+  --accent-primary: #60a5fa;
+  --accent-secondary: #081226;
+  --accent-kiwi: #7cff00;
+  --border-color: #1f2937;
+  --hero-bg: var(--bg-main);
+  --hero-text: var(--text-main);
+  --hero-subtext: var(--text-muted);
+}
+
+
+/* =========================
+   BASE
+========================= */
+body {
+  background: var(--bg-main);
+  color: var(--text-main);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section {
+  padding: 4rem 0;
+}
+
+.section-alt {
+  background: var(--bg-alt);
+}
+
+/* =========================
+   TYPOGRAPHY
+========================= */
+h1, h2, h3, h4 {
+  font-weight: 600;
+}
+
+h2 {
+  margin-bottom: 1rem;
+}
+
+.subheading {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: var(--accent-primary);
+}
+
+.section-intro {
+  max-width: 600px;
+  margin-bottom: 2rem;
+  color: var(--text-muted);
+}
+
+/* =========================
+   HEADER
+========================= */
+.header {
+  border-bottom: 1px solid var(--border-color);
+  padding: 1rem 0;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav a {
+  text-decoration: none;
+  color: var(--text-main);
+  font-size: 0.9rem;
+}
+
+.nav a:hover {
+  text-decoration: underline;
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  padding: 0.35rem 0.6rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.theme-toggle i {
+  font-size: 1rem;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-1px);
+}
+
+/* =========================
+   HERO
+========================= */
+.hero {
+  background: var(--hero-bg);
+  color: var(--hero-text);
+  padding: 4rem 0;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.hero h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  max-width: 700px;
+  color: var(--hero-subtext);
+  transition: color 0.25s ease;
+}
+
+/* =========================
+   SCOUTING APPROACH
+========================= */
+.approach-list {
+  list-style: disc;
+  padding-left: 1.5rem;
+}
+
+.approach-list li {
+  margin-bottom: 0.5rem;
+}
+
+/* =========================
+   ABOUT DIVIDER (DATA STYLE)
+========================= */
+.about-divider {
+  height: 2px;
+  width: 60px;
+  background: var(--accent-kiwi);
+  margin: 2rem 0;
+}
+
+/* =========================
+   LEAGUES (SCOUTING STYLE)
+========================= */
+.leagues-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.league-card {
+  position: relative;
+  border: 1px solid var(--border-color);
+  background: var(--bg-main);
+  padding: 1.25rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.league-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--accent-kiwi);
+}
+
+.league-card h4 {
+  margin-top: 0.4rem;
+  font-size: 1rem;
+}
+
+.league-country {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+}
+
+.league-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+
+/* =========================
+   REPORTS
+========================= */
+.report-card {
+  border: 1px dashed var(--border-color);
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.report-card.placeholder {
+  color: var(--text-muted);
+  background: rgba(0,0,0,0.02);
+}
+
+/* =========================
+   CONTACT
+========================= */
+.contact-links {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.contact-links a {
+  text-decoration: none;
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+.contact-links i {
+  margin-right: 0.5rem;
+}
+
+/* =========================
+   FOOTER
+========================= */
+.footer {
+  padding: 2rem 0;
+  text-align: center;
+  border-top: 1px solid var(--border-color);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
