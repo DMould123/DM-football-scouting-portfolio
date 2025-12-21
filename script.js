@@ -25,3 +25,10 @@ if (toggle) {
   else if (saved === '0') setDarkMode(false);
   else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) setDarkMode(true);
 }
+
+// Add 'loaded' class to hero when page finishes loading
+window.addEventListener('load', () => {
+  document.querySelector('.hero')?.classList.add('loaded');
+});
+
+

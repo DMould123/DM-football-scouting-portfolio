@@ -172,6 +172,16 @@ body.dark .logo img {
   color: var(--hero-text);
   padding: 4rem 0;
   transition: background-color 0.25s ease, color 0.25s ease;
+  /* initial state for entry animation */
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+/* reveal state after JS adds .loaded */
+.hero.loaded {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 .hero h2 {
@@ -248,6 +258,25 @@ body.dark .logo img {
 .social-links a:hover {
   transform: scale(1.1);
 }
+
+.credibility-strip {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin: 0.75rem 0 1rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.credibility-strip span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.6rem;
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+}
+
 
 .avatar-wrap {
   width: 380px;
@@ -378,6 +407,9 @@ body.dark .logo img {
   background: var(--bg-main);
   padding: 1.25rem;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  /* example reveal start state */
+  opacity: 0;
+  transform: translateY(8px);
 }
 
 .league-card::before {
@@ -410,10 +442,101 @@ body.dark .logo img {
 /* =========================
    REPORTS
 ========================= */
-.report-card {
-  border: 1px dashed var(--border-color);
-  padding: 1.5rem;
-  margin-top: 1.5rem;
+.scout-report {
+  max-width: 900px;
+  margin: 40px auto;
+  font-family: "Inter", Arial, sans-serif;
+  color: #1a1a1a;
+  line-height: 1.6;
+}
+
+.player-header {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  border-bottom: 3px solid #e04430;
+  padding-bottom: 20px;
+}
+
+.player-photo {
+  width: 160px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.player-meta h1 {
+  margin: 0;
+  font-size: 32px;
+}
+
+.position {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.report-section {
+  margin-top: 32px;
+}
+
+.report-section h2 {
+  font-size: 22px;
+  margin-bottom: 12px;
+  border-left: 4px solid #e04430;
+  padding-left: 12px;
+}
+
+.scout-video {
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.video-caption {
+  font-size: 14px;
+  color: #555;
+  margin-top: 6px;
+  font-style: italic;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  background: #f7f6f5;
+  padding: 16px;
+  border-radius: 10px;
+}
+
+.pdf-section {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.pdf-button {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #e04430;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.pdf-button:hover {
+  background-color: #c73727;
+}
+
+
+/* =========================
+   ANIMATION EXAMPLES (usable patterns)
+   Add the matching `.visible` or `.loaded` class from JS
+   to trigger these reveals. */
+.league-card.visible,
+.report-card.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .report-card.placeholder {
