@@ -106,6 +106,24 @@ h2 {
   align-items: center;
 }
 
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.25rem;
+}
+
+.logo img {
+  width: 36px;
+  height: 36px;
+  display: block;
+}
+
+/* Ensure logo image remains visible on dark mode */
+body.dark .logo img {
+  filter: invert(1) brightness(1.1) contrast(1.05);
+}
+
 .nav ul {
   list-style: none;
   display: flex;
@@ -122,7 +140,9 @@ h2 {
   text-decoration: underline;
 }
 
-/* Theme toggle button */
+/* =========================
+   THEME TOGGLE BUTTON
+========================= */
 .theme-toggle {
   background: transparent;
   border: 1px solid var(--border-color);
@@ -163,6 +183,162 @@ h2 {
   max-width: 700px;
   color: var(--hero-subtext);
   transition: color 0.25s ease;
+}
+
+/* Landing hero layout */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.hero-inner {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3rem 0;
+  width: 100%;
+}
+
+.hero-left {
+  flex: 1 1 55%;
+}
+
+.hero-right {
+  flex: 0 0 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-name {
+  font-size: 2.25rem;
+  margin-bottom: 0.4rem;
+}
+
+.hero-tagline {
+  font-size: 1.05rem;
+  margin-bottom: 1.25rem;
+  color: var(--text-muted);
+}
+
+/* =========================
+   SOCIAL LINKS
+========================= */
+.social-links {
+  display: flex;
+  margin-bottom: 1rem;
+  gap: 0.5rem;
+}
+
+.social-links a {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--text-main);
+  font-size: 18px;
+  color: var(--bg-main);
+  transition: transform 0.5s ease, background 0.5s ease;
+}
+
+.social-links a:hover {
+  transform: scale(1.1);
+}
+
+.avatar-wrap {
+  width: 380px;
+  height: 520px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 4px solid var(--border-color);
+  display: inline-block;
+  background: var(--bg-alt);
+}
+
+.avatar-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-logos {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.hero-logos img {
+  height: 40px;
+  width: auto;
+  display: block;
+  opacity: 0.95;
+}
+
+.scroll-down {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  text-decoration: none;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 28px;
+}
+
+/* =========================
+   DOWNLOAD CV BUTTON
+========================= */
+.button-container {
+  display: flex;
+  justify-content: flex-start;
+  margin: 1.5rem 0;
+}
+
+.download-btn {
+  display: inline-block;
+  padding: 9px 30px;
+  background: transparent;
+  border: 2px solid var(--accent-primary);
+  border-radius: 30px;
+  color: var(--text-main);
+  letter-spacing: 1px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: ease 0.5s;
+  text-decoration: none;
+}
+
+.download-btn:hover {
+  transform: scale(1.1);
+  background: var(--accent-primary);
+  border: 2px solid var(--accent-primary);
+  color: var(--bg-main);
+}
+
+/* Responsive: stack on smaller screens */
+@media (max-width: 980px) {
+  .hero-inner { flex-direction: column-reverse; text-align: center; }
+  .hero-right { margin-bottom: 1.5rem; }
+  .hero-left { width: 100%; }
+  .avatar-wrap { width: 260px; height: 360px; }
+  .hero-logos { justify-content: center; }
+}
+
+@media (max-width: 480px) {
+  .hero-right { flex: 0 0 auto; }
+  .avatar-wrap { width: 200px; height: 280px; }
+  .hero-name { font-size: 1.6rem; }
 }
 
 /* =========================
