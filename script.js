@@ -116,5 +116,35 @@ document.querySelectorAll('.pitch-instance').forEach(instance => {
   instance.appendChild(clone);
 });
 
+// ScrollReveal initialization - runs when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+  if (typeof ScrollReveal !== 'undefined') {
+    const sr = ScrollReveal({
+      distance: '50px',
+      duration: 800,
+      delay: 100,
+      easing: 'cubic-bezier(0.645, 0.045, 0.355, 1)',
+      opacity: 0,
+      scale: 0.95,
+      reset: true // Elements animate each time they enter viewport
+    });
+
+    // Reveal league cards with staggered timing
+    sr.reveal('.league-card', { interval: 100 });
+
+    // Reveal report sections
+    sr.reveal('.report-section', { distance: '30px', delay: 50 });
+
+    // Reveal video sections
+    sr.reveal('.video-section', { distance: '40px' });
+
+    // Reveal contact links
+    sr.reveal('.contact-links', { distance: '30px' });
+
+    // Reveal section titles
+    sr.reveal('.section > .container > h2', { distance: '20px', delay: 50 });
+  }
+});
+
 
 
