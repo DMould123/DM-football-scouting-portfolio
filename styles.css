@@ -25,6 +25,10 @@
   --hero-bg: var(--bg-main);
   --hero-text: var(--text-main);
   --hero-subtext: var(--text-muted);
+  /* Report / pitch specific colours */
+  --accent-report: #e04430;
+  --pitch-bg: #1e3a5f;
+  --pitch-mark: #ffffff;
 }
 /* =========================
    THEME: DARK (simple light/dark toggle)
@@ -41,6 +45,10 @@ body.dark {
   --hero-bg: var(--bg-main);
   --hero-text: var(--text-main);
   --hero-subtext: var(--text-muted);
+  /* Adjust report / pitch colours for dark mode */
+  --accent-report: #ff6b5c;
+  --pitch-bg: #0f2430;
+  --pitch-mark: #ffffff;
 }
 
 
@@ -175,6 +183,9 @@ body.dark .logo img {
   /* initial state for entry animation */
   opacity: 0;
   transform: translateY(10px);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
 }
 
 /* reveal state after JS adds .loaded */
@@ -193,13 +204,6 @@ body.dark .logo img {
   max-width: 700px;
   color: var(--hero-subtext);
   transition: color 0.25s ease;
-}
-
-/* Landing hero layout */
-.hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
 }
 
 .hero-inner {
@@ -443,24 +447,45 @@ body.dark .logo img {
    REPORTS
 ========================= */
 .scout-report {
-  max-width: 900px;
+  max-width: 950px;
   margin: 40px auto;
-  font-family: "Inter", Arial, sans-serif;
-  color: #1a1a1a;
+  font-family: Inter, Arial, sans-serif;
+  color: var(--text-main);
   line-height: 1.6;
 }
 
 .player-header {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   gap: 24px;
+  align-items: flex-start;
+  border-bottom: 3px solid var(--accent-report);
+  padding-bottom: 24px;
+}
+
+.player-left {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  border-bottom: 3px solid #e04430;
-  padding-bottom: 20px;
+  justify-content: flex-start;
+  gap: 12px;
+}
+
+.player-middle {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.player-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .player-photo {
-  width: 160px;
-  height: 200px;
+  width: 170px;
+  height: 220px;
   object-fit: cover;
   border-radius: 10px;
 }
@@ -471,63 +496,168 @@ body.dark .logo img {
 }
 
 .position {
-  font-size: 18px;
-  color: #666;
-  margin-bottom: 10px;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.meta-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(180px, 1fr));
+  gap: 6px 16px;
+  font-size: 14px;
+}
+
+.meta-item-with-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.meta-badge {
+  width: 32px;
+  height: 21px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.positions-compact {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--accent-report);
+}
+
+.positions-compact h3 {
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: var(--text-main);
 }
 
 .report-section {
   margin-top: 32px;
 }
 
+.highlight {
+  background: var(--bg-alt);
+  padding: 16px;
+  border-left: 4px solid var(--accent-report);
+  border-radius: 6px;
+}
+
 .report-section h2 {
-  font-size: 22px;
-  margin-bottom: 12px;
-  border-left: 4px solid #e04430;
+  border-left: 4px solid var(--accent-report);
   padding-left: 12px;
+  font-size: 22px;
+}
+
+/* =========================
+   VIDEO SECTION (ENHANCED)
+========================= */
+
+.video-section {
+  margin-top: 40px;
+}
+
+.video-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  background: var(--bg-alt);
+  border-radius: 12px;
+  padding: 16px;
+  border-left: 4px solid var(--accent-report);
+}
+
+.video-frame {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #000;
 }
 
 .scout-video {
   width: 100%;
+  display: block;
   border-radius: 10px;
-  margin-top: 10px;
+}
+
+.video-info {
+  padding: 6px 4px 0;
+}
+
+.video-title {
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 4px;
+  color: var(--text-main);
 }
 
 .video-caption {
   font-size: 14px;
-  color: #555;
-  margin-top: 6px;
+  color: var(--text-muted);
+  line-height: 1.5;
   font-style: italic;
 }
 
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 12px;
-  background: #f7f6f5;
-  padding: 16px;
-  border-radius: 10px;
+/* =========================
+   ANIMATIONS (SCREEN ONLY)
+========================= */
+
+@media screen {
+  .animate-on-screen {
+    animation: fadeUp 0.6s ease-out both;
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* =========================
+   PDF / PRINT SAFETY
+========================= */
+
+@media print {
+  .animate-on-screen {
+    animation: none !important;
+  }
+
+  .video-card {
+    box-shadow: none;
+    background: #fff;
+  }
+}
+
+/* Pitch */
+
+
+.pitch-small {
+  position: relative;
+  width: 100%;
+  max-width: 240px;
+  height: 340px;
+  margin: 12px 0;
+  border-radius: 8px;
 }
 
 .pdf-section {
   text-align: center;
-  margin-top: 40px;
 }
 
 .pdf-button {
-  display: inline-block;
-  padding: 12px 24px;
-  background-color: #e04430;
+  background: var(--accent-report);
   color: #fff;
-  text-decoration: none;
+  padding: 12px 24px;
   border-radius: 6px;
+  text-decoration: none;
   font-weight: bold;
 }
-
-.pdf-button:hover {
-  background-color: #c73727;
-}
-
 
 /* =========================
    ANIMATION EXAMPLES (usable patterns)
