@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
       easing: 'cubic-bezier(0.645, 0.045, 0.355, 1)',
       opacity: 0,
       scale: 0.95,
-      reset: true // Elements animate each time they enter viewport
+      reset: true 
     });
 
     // Reveal league cards with staggered timing
