@@ -21,8 +21,11 @@
       <img src="https://res.cloudinary.com/dele4dvi9/image/upload/v1766276938/Football%20Scouting%20Portfolio/soccer-ball-on-tv-monitor_xcnfjn.png" alt="logo" />
       <span>David Mould</span>
     </h1>
-    <nav>
-      <ul>
+    <nav id="mainNav" class="main-nav" aria-label="Primary navigation">
+      <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="mainNavList" aria-label="Open menu">
+        <i class="fas fa-bars"></i>
+      </button>
+      <ul id="mainNavList" class="nav-list">
         <li><a href="#about">About</a></li>
         <li><a href="#approach">Approach</a></li>
         <li><a href="#reports">Reports</a></li>
@@ -34,6 +37,9 @@
     </button>
   </div>
 </header>
+
+<!-- mobile nav overlay (used to close menu when open) -->
+<div id="navOverlay" class="nav-overlay" aria-hidden="true"></div>
 
 <section class="hero" aria-label="Landing">
   <div class="container hero-inner">
@@ -48,7 +54,7 @@
         ></a>
       </div>
            <span class="hero-role">Consultant Football Watcher at Smartodds</span>
-      <p class="hero-tagline">Football Scouting & Match Analysis<br>
+      <p class="hero-tagline">Football Scouting & Match Analysis</p>
         <div class="credibility-strip">
   <span><i class="fas fa-bolt"></i> Live Match Data Collection</span>
   <span><i class="fas fa-check-circle"></i> Smartodds Certified</span>
@@ -62,7 +68,7 @@
 
       </p>
 
-      <div class="hero-logos" aria-hidden="false">
+      <div class="hero-logos">
         <img src="https://res.cloudinary.com/dele4dvi9/image/upload/v1766275330/Football%20Scouting%20Portfolio/EFL_Championship_Logo.svg_q5deta.png" alt="EFL Championship logo">
         <img src="https://res.cloudinary.com/dele4dvi9/image/upload/v1766275309/Football%20Scouting%20Portfolio/Serie_BKT_logo.svg_tou3zv.png" alt="Serie B logo">
         <img src="https://res.cloudinary.com/dele4dvi9/image/upload/v1766275185/Football%20Scouting%20Portfolio/2._Bundesliga_logo.svg_vmqzjc.png" alt="2. Bundesliga logo">
@@ -144,10 +150,6 @@
         <strong>Introduction to Talent Identification in Football</strong><br>
         Completed: October 2024
       </li>
-
-      <li>
-        <strong>JavaScript Developer</strong>, IT-Högskolan
-      </li>
     </ul>
   </div>
 </section>
@@ -219,7 +221,7 @@
         </p>
 
         <p>
-          Match observed: <strong>21/12/2025</strong> — Strasbourg vs Dunkerque,
+          Match observed: <strong>21/12/2025</strong> — RC Strasbourg vs Dunkerque,
           <strong>Coupe de France (Round of 64)</strong>.
         </p>
       </section>
@@ -290,7 +292,7 @@
             <text x="135" y="80" fill="#fff" font-size="10" font-weight="600">RW</text>
           </svg>
         </div>
-        <p class="pitch-caption">Left Winger • Right Winger / Advanced Midfielder</p>
+        <p class="pitch-caption">Left Winger • Right Winger</p>
       </div>
     </div>
   </header>
@@ -350,7 +352,7 @@
 
     <div class="video-info">
       <p class="video-title">
-        1v1 Situation – Penalty Won vs Strasbourg
+        1v1 Situation – Penalty Won vs RC Strasbourg - Coupe de France (Round of 64).
       </p>
       <p class="video-caption">
         Yassine isolates Diego Moreira, shifts the ball inside at pace and
@@ -394,5 +396,45 @@
   <p>&copy; 2025 David Mould — Football Scouting Portfolio</p>
 </footer>
  <script src="script.js"></script>
+ <template id="pitch-template">
+  <div class="pitch-small">
+    <svg viewBox="0 0 170 230" xmlns="http://www.w3.org/2000/svg" aria-label="Mini football pitch" role="img">
+      <!-- Pitch background -->
+      <rect x="0" y="0" width="170" height="230" rx="6" class="pitch-bg" />
+
+      <!-- Outer lines -->
+      <rect x="6" y="6" width="158" height="218" fill="none" class="pitch-line thick" />
+
+      <!-- Halfway line -->
+      <line x1="6" y1="115" x2="164" y2="115" class="pitch-line" />
+
+      <!-- Centre circle -->
+      <circle cx="85" cy="115" r="18" fill="none" class="pitch-line" />
+
+      <!-- Centre spot -->
+      <circle cx="85" cy="115" r="1.5" class="pitch-mark" />
+
+      <!-- Penalty boxes -->
+      <rect x="40" y="6" width="90" height="36" fill="none" class="pitch-line" />
+      <rect x="40" y="188" width="90" height="36" fill="none" class="pitch-line" />
+
+      <!-- Six-yard boxes -->
+      <rect x="56" y="6" width="58" height="12" fill="none" class="pitch-line" />
+      <rect x="56" y="212" width="58" height="12" fill="none" class="pitch-line" />
+
+      <!-- Penalty spots -->
+      <circle cx="85" cy="28" r="1.5" class="pitch-mark" />
+      <circle cx="85" cy="202" r="1.5" class="pitch-mark" />
+
+      <!-- Goals -->
+      <rect x="82" y="-2" width="6" height="6" class="pitch-mark" />
+      <rect x="82" y="226" width="6" height="6" class="pitch-mark" />
+
+      <!-- POSITION LABEL SLOT -->
+      <g class="pitch-positions"></g>
+    </svg>
+  </div>
+</template>
+
 </body>
 </html>

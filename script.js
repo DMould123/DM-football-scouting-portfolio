@@ -31,4 +31,90 @@ window.addEventListener('load', () => {
   document.querySelector('.hero')?.classList.add('loaded');
 });
 
+// Responsive nav toggle behaviour
+const navToggle = document.getElementById('navToggle');
+const mainNav = document.getElementById('mainNav');
+const navOverlay = document.getElementById('navOverlay');
+const mainNavList = document.getElementById('mainNavList');
+
+function openNav() {
+  if (!mainNav) return;
+  mainNav.classList.add('open');
+  navToggle.setAttribute('aria-expanded', 'true');
+  if (navOverlay) navOverlay.classList.add('visible');
+  if (navOverlay) navOverlay.setAttribute('aria-hidden', 'false');
+  // swap icon
+  navToggle.innerHTML = '<i class="fas fa-times"></i>';
+  // focus first link
+  const firstLink = mainNavList?.querySelector('a');
+  if (firstLink) firstLink.focus();
+}
+
+function closeNav() {
+  if (!mainNav) return;
+  mainNav.classList.remove('open');
+  navToggle.setAttribute('aria-expanded', 'false');
+  if (navOverlay) navOverlay.classList.remove('visible');
+  if (navOverlay) navOverlay.setAttribute('aria-hidden', 'true');
+  navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+  navToggle.focus();
+}
+
+if (navToggle) {
+  navToggle.addEventListener('click', () => {
+    if (mainNav?.classList.contains('open')) closeNav();
+    else openNav();
+  });
+}
+
+// Close when clicking overlay
+if (navOverlay) {
+  navOverlay.addEventListener('click', () => closeNav());
+}
+
+// Close on Escape
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeNav();
+});
+
+// Close nav when a link is clicked (mobile)
+document.querySelectorAll('#mainNavList a').forEach(a => {
+  a.addEventListener('click', () => {
+    if (window.innerWidth <= 980) closeNav();
+  });
+});
+
+document.querySelectorAll('.pitch-instance').forEach(instance => {
+  const tpl = document.getElementById('pitch-template');
+  if (!tpl) return;
+
+  const clone = tpl.content.cloneNode(true);
+  const positionsGroup = clone.querySelector('.pitch-positions');
+
+  const positions = (instance.dataset.positions || '')
+    .split(',')
+    .map(p => p.trim());
+
+  const coords = {
+    LW: { x: 22, y: 80 },
+    RW: { x: 135, y: 80 },
+    CAM: { x: 85, y: 100 },
+    ST: { x: 85, y: 45 }
+  };
+
+  positions.forEach(pos => {
+    if (!coords[pos]) return;
+
+    const t = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    t.setAttribute('x', coords[pos].x);
+    t.setAttribute('y', coords[pos].y);
+    t.setAttribute('class', 'pitch-label');
+    t.textContent = pos;
+    positionsGroup.appendChild(t);
+  });
+
+  instance.appendChild(clone);
+});
+
+
 

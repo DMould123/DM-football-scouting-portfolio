@@ -27,8 +27,6 @@
   --hero-subtext: var(--text-muted);
   /* Report / pitch specific colours */
   --accent-report: #e04430;
-  --pitch-bg: #1e3a5f;
-  --pitch-mark: #ffffff;
 }
 /* =========================
    THEME: DARK (simple light/dark toggle)
@@ -47,8 +45,6 @@ body.dark {
   --hero-subtext: var(--text-muted);
   /* Adjust report / pitch colours for dark mode */
   --accent-report: #ff6b5c;
-  --pitch-bg: #0f2430;
-  --pitch-mark: #ffffff;
 }
 
 
@@ -172,6 +168,85 @@ body.dark .logo img {
   transform: translateY(-1px);
 }
 
+/* -------------------------
+   MOBILE NAV / HAMBURGER
+   ------------------------- */
+.nav-toggle {
+  display: none; /* shown via media query */
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  padding: 0.5rem 0.6rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 70;
+}
+
+.nav-toggle:hover {
+  transform: none;
+}
+
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  z-index: 45;
+}
+
+.nav-overlay.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.main-nav {
+  position: relative;
+}
+
+.main-nav .nav-list {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+/* Mobile behaviour */
+@media (max-width: 980px) {
+  .nav-toggle { display: inline-flex; }
+  .nav .logo { z-index: 60; }
+
+  /* hide inline list, move to sliding panel */
+  .main-nav .nav-list {
+    position: fixed;
+    top: 0;
+    right: -320px;
+    width: 280px;
+    height: 100vh;
+    flex-direction: column;
+    background: var(--bg-main);
+    padding: 3.6rem 1.2rem 1.2rem;
+    gap: 1rem;
+    align-items: flex-start;
+    box-shadow: -6px 0 20px rgba(0,0,0,0.12);
+    transition: right 0.28s cubic-bezier(.2,.9,.2,1);
+    z-index: 50;
+  }
+
+  .main-nav .nav-list li { width: 100%; }
+  .main-nav .nav-list a { display: block; padding: 10px 6px; width: 100%; }
+
+  .main-nav.open .nav-list { right: 0; }
+  .nav .logo img { width: 34px; height: 34px; }
+
+  /* ensure theme button remains visible */
+  .theme-toggle { z-index: 60; }
+}
+
 /* =========================
    HERO
 ========================= */
@@ -244,6 +319,7 @@ body.dark .logo img {
   display: flex;
   margin-bottom: 1rem;
   gap: 0.5rem;
+  justify-content: flex-start;
 }
 
 .social-links a {
@@ -261,6 +337,12 @@ body.dark .logo img {
 
 .social-links a:hover {
   transform: scale(1.1);
+}
+
+@media (max-width: 980px) {
+  .social-links {
+    justify-content: center;
+  }
 }
 
 .credibility-strip {
@@ -361,17 +443,52 @@ body.dark .logo img {
 
 /* Responsive: stack on smaller screens */
 @media (max-width: 980px) {
-  .hero-inner { flex-direction: column-reverse; text-align: center; }
+  .hero-inner { flex-direction: column-reverse; text-align: center; padding: 2rem 0; }
   .hero-right { margin-bottom: 1.5rem; }
   .hero-left { width: 100%; }
   .avatar-wrap { width: 260px; height: 360px; }
-  .hero-logos { justify-content: center; }
+  .hero-logos { justify-content: center; gap: 1rem; }
+  .button-container { justify-content: center; }
+  .hero-name { font-size: 1.8rem; }
+  .hero-tagline { font-size: 1rem; }
+  .section-intro { max-width: 100%; }
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 2rem 0; min-height: auto; }
+  .hero-name { font-size: 1.7rem; }
+  .hero-tagline { font-size: 0.95rem; }
+  .hero-logos { gap: 0.8rem; }
+  .hero-logos img { height: 35px; }
+  h2 { font-size: 1.5rem; }
+  .subheading { font-size: 1rem; }
+  .nav a { font-size: 0.85rem; }
+  .leagues-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+  .scroll-down { bottom: 12px; width: 40px; height: 40px; }
 }
 
 @media (max-width: 480px) {
+  .hero { padding: 1.5rem 0; }
   .hero-right { flex: 0 0 auto; }
   .avatar-wrap { width: 200px; height: 280px; }
-  .hero-name { font-size: 1.6rem; }
+  .hero-name { font-size: 1.5rem; }
+  .hero-tagline { font-size: 0.9rem; }
+  .hero-mission { font-size: 0.9rem; }
+  .hero-logos { gap: 0.6rem; }
+  .hero-logos img { height: 28px; }
+  .credibility-strip { font-size: 0.7rem; gap: 0.4rem; }
+  .credibility-strip span { padding: 0.2rem 0.4rem; }
+  .download-btn { padding: 7px 18px; font-size: 0.85rem; letter-spacing: 0.5px; }
+  .social-links { margin-bottom: 0.8rem; gap: 0.4rem; }
+  .social-links a { width: 36px; height: 36px; font-size: 16px; }
+  h1 { font-size: 1.3rem; }
+  h2 { font-size: 1.2rem; }
+  .section { padding: 2rem 0; }
+  .container { width: 95%; }
+  .nav a { font-size: 0.8rem; }
+  .theme-toggle { padding: 0.3rem 0.5rem; font-size: 0.85rem; }
+  .logo { font-size: 1rem; gap: 0.4rem; }
+  .logo img { width: 28px; height: 28px; }
 }
 
 /* =========================
@@ -663,16 +780,11 @@ body.dark .logo img {
    ANIMATION EXAMPLES (usable patterns)
    Add the matching `.visible` or `.loaded` class from JS
    to trigger these reveals. */
-.league-card.visible,
-.report-card.visible {
+.league-card.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-.report-card.placeholder {
-  color: var(--text-muted);
-  background: rgba(0,0,0,0.02);
-}
 
 /* =========================
    CONTACT
@@ -693,6 +805,24 @@ body.dark .logo img {
   margin-right: 0.5rem;
 }
 
+.pitch-bg {
+  fill: var(--pitch-bg);
+}
+
+.pitch-line {
+  stroke: var(--pitch-mark);
+  stroke-width: 1;
+}
+
+.pitch-line.thick {
+  stroke-width: 1.5;
+}
+
+.pitch-mark {
+  fill: var(--pitch-mark);
+}
+
+
 /* =========================
    FOOTER
 ========================= */
@@ -702,4 +832,93 @@ body.dark .logo img {
   border-top: 1px solid var(--border-color);
   font-size: 0.85rem;
   color: var(--text-muted);
+}
+
+/* =========================
+   RESPONSIVE: REPORTS + NAV TWEAKS
+   ------------------------- */
+@media (max-width: 880px) {
+  .player-header {
+    display: block;
+    padding-bottom: 18px;
+    border-bottom: 3px solid var(--accent-report);
+  }
+
+  .player-left, .player-middle, .player-right {
+    width: 100%;
+    display: block;
+    text-align: left;
+    margin-bottom: 12px;
+  }
+
+  .player-photo {
+    width: 160px;
+    height: 200px;
+    margin: 0 auto 12px;
+    display: block;
+  }
+
+  .player-middle { padding: 0 6px; }
+
+  .meta-grid {
+    grid-template-columns: 1fr;
+    gap: 8px 8px;
+  }
+
+  .positions-compact { display: block; margin-top: 14px; }
+
+  .pitch-small { max-width: 180px; height: 260px; }
+}
+
+@media (max-width: 640px) {
+  .scout-report {
+    max-width: 100%;
+    margin: 20px auto;
+    padding: 0 1rem;
+  }
+
+  .player-header {
+    padding-bottom: 14px;
+  }
+
+  .player-photo {
+    width: 140px;
+    height: 180px;
+  }
+
+  .player-middle h1 {
+    font-size: 24px;
+  }
+
+  .meta-grid {
+    font-size: 13px;
+  }
+
+  .report-section h2 {
+    font-size: 18px;
+  }
+
+  .pitch-small { max-width: 140px; height: 200px; }
+
+  .video-card {
+    padding: 12px;
+  }
+
+  .video-title {
+    font-size: 14px;
+  }
+
+  .video-caption {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .player-photo { width: 120px; height: 160px; }
+  .player-middle h1 { font-size: 20px; }
+  .meta-grid { font-size: 12px; }
+  .report-section h2 { font-size: 16px; }
+  .scout-report { margin: 15px auto; padding: 0 0.75rem; }
+  .highlight { padding: 12px; font-size: 14px; }
+  .pitch-small { max-width: 120px; height: 170px; }
 }
