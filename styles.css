@@ -759,8 +759,9 @@ body.dark .logo img {
   width: 100%;
   max-width: 240px;
   height: 340px;
-  margin: 12px 0;
+  margin: 12px auto;
   border-radius: 8px;
+  display: block;
 }
 
 .pdf-section {
@@ -842,14 +843,17 @@ body.dark .logo img {
     display: block;
     padding-bottom: 18px;
     border-bottom: 3px solid var(--accent-report);
+    text-align: center;
   }
 
   .player-left, .player-middle, .player-right {
     width: 100%;
     display: block;
-    text-align: left;
+    text-align: center;
     margin-bottom: 12px;
   }
+
+  .player-left { display: flex; flex-direction: column; align-items: center; }
 
   .player-photo {
     width: 160px;
@@ -858,14 +862,16 @@ body.dark .logo img {
     display: block;
   }
 
-  .player-middle { padding: 0 6px; }
+  .player-middle { padding: 0; }
 
   .meta-grid {
     grid-template-columns: 1fr;
     gap: 8px 8px;
+    justify-items: center;
+    text-align: center;
   }
 
-  .positions-compact { display: block; margin-top: 14px; }
+  .positions-compact { display: block; margin-top: 14px; text-align: center; }
 
   .pitch-small { max-width: 180px; height: 260px; }
 }
@@ -892,6 +898,8 @@ body.dark .logo img {
 
   .meta-grid {
     font-size: 13px;
+    justify-items: center;
+    text-align: center;
   }
 
   .report-section h2 {
@@ -916,7 +924,8 @@ body.dark .logo img {
 @media (max-width: 480px) {
   .player-photo { width: 120px; height: 160px; }
   .player-middle h1 { font-size: 20px; }
-  .meta-grid { font-size: 12px; }
+  .player-left, .player-middle, .player-right { text-align: center; }
+  .meta-grid { font-size: 12px; justify-items: center; text-align: center; }
   .report-section h2 { font-size: 16px; }
   .scout-report { margin: 15px auto; padding: 0 0.75rem; }
   .highlight { padding: 12px; font-size: 14px; }
