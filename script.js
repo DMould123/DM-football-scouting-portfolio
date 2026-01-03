@@ -144,6 +144,32 @@ document.addEventListener('DOMContentLoaded', () => {
     // Reveal section titles
     sr.reveal('.section > .container > h2', { distance: '20px', delay: 50 });
   }
+
+  // Typewriter effect for hero mission
+  const typewriterElement = document.querySelector('.typewriter-animation');
+  if (typewriterElement) {
+    const text = typewriterElement.getAttribute('data-typewriter');
+    typewriterElement.textContent = '';
+    
+    const cursor = document.createElement('span');
+    cursor.className = 'typewriter-cursor';
+    
+    let charIndex = 0;
+    const speed = 50; // milliseconds per character
+    const startDelay = 1000; // delay before typing starts
+
+    setTimeout(() => {
+      function typeChar() {
+        if (charIndex < text.length) {
+          typewriterElement.textContent = text.substring(0, charIndex + 1);
+          typewriterElement.appendChild(cursor);
+          charIndex++;
+          setTimeout(typeChar, speed);
+        }
+      }
+      typeChar();
+    }, startDelay);
+  }
 });
 
 
