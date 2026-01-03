@@ -154,21 +154,32 @@ document.addEventListener('DOMContentLoaded', () => {
     const cursor = document.createElement('span');
     cursor.className = 'typewriter-cursor';
     
-    let charIndex = 0;
-    const speed = 50; // milliseconds per character
+    const speed = 40; // milliseconds per character
     const startDelay = 1000; // delay before typing starts
+    const pauseAfterComplete = 10000; // pause after typing completes before restarting
 
-    setTimeout(() => {
+    function startTypewriter() {
+      let charIndex = 0;
+      typewriterElement.textContent = '';
+      
       function typeChar() {
         if (charIndex < text.length) {
           typewriterElement.textContent = text.substring(0, charIndex + 1);
           typewriterElement.appendChild(cursor);
           charIndex++;
           setTimeout(typeChar, speed);
+        } else {
+          // Typing complete, wait then restart
+          setTimeout(() => {
+            startTypewriter();
+          }, pauseAfterComplete);
         }
       }
-      typeChar();
-    }, startDelay);
+      
+      setTimeout(typeChar, startDelay);
+    }
+    
+    startTypewriter();
   }
 });
 
