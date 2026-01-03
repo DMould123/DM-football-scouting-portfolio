@@ -84,7 +84,7 @@ h2 {
 .subheading {
   font-size: 1.1rem;
   margin-bottom: 0.5rem;
-  color: var(--accent-primary);
+  color: var(--text-main);
 }
 
 .section-intro {
@@ -443,7 +443,7 @@ body.dark .logo img {
   font-size: 1.3rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  color: var(--accent-primary);
+  color: var(--text-main);
 }
 
 .hero-mission {
@@ -666,19 +666,96 @@ body.dark .logo img {
 ========================= */
 .leagues-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(6, 1fr);
   gap: 1.5rem;
+}
+
+.league-card {
+  grid-column: span 2;
+}
+
+/* Center last 2 items when there are 5 total */
+.league-card:nth-child(4):nth-last-child(2) {
+  grid-column: 2 / span 2;
+}
+
+@media (max-width: 768px) {
+  .leagues-grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+  }
+  
+  .league-card {
+    grid-column: span 2;
+    padding: 1rem 0.75rem;
+  }
+  
+  .league-icon {
+    height: 45px;
+    margin-bottom: 0.75rem;
+  }
+  
+  .league-card h4 {
+    font-size: 0.9rem;
+  }
+  
+  .league-country {
+    font-size: 0.65rem;
+  }
+  
+  /* Keep centering on tablet */
+  .league-card:nth-child(4):nth-last-child(2) {
+    grid-column: 2 / span 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .leagues-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+  
+  .league-card {
+    grid-column: span 1;
+    padding: 0.9rem 0.6rem;
+  }
+  
+  .league-icon {
+    height: 38px;
+    margin-bottom: 0.6rem;
+  }
+  
+  .league-card h4 {
+    font-size: 0.85rem;
+  }
+  
+  /* Reset centering for 2-column layout */
+  .league-card:nth-child(4):nth-last-child(2) {
+    grid-column: span 1;
+  }
+  
+  /* Center last item if odd number */
+  .league-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    max-width: 50%;
+    margin: 0 auto;
+  }
 }
 
 .league-card {
   position: relative;
   border: 1px solid var(--border-color);
   background: var(--bg-main);
-  padding: 1.25rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  padding: 1.5rem 1.25rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.8s ease;
   /* example reveal start state */
-  opacity: 0;
-  transform: translateY(8px);
+  opacity: 1;
+  transform: translateY(0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  overflow: visible;
 }
 
 .league-card::before {
@@ -689,6 +766,18 @@ body.dark .logo img {
   width: 3px;
   height: 100%;
   background: var(--accent-kiwi);
+  z-index: 0;
+}
+
+.league-icon {
+  height: 60px;
+  width: auto;
+  margin-bottom: 1rem;
+  display: block;
+  opacity: 0.95;
+  position: relative;
+  z-index: 1;
+  object-fit: contain;
 }
 
 .league-card h4 {
