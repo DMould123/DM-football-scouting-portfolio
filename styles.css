@@ -1023,12 +1023,24 @@ body.dark .logo img {
 }
 
 .pdf-button {
-  background: var(--accent-report);
-  color: #fff;
-  padding: 12px 24px;
-  border-radius: 6px;
+  display: inline-block;
+  padding: 12px 32px;
+  background: transparent;
+  border: 2px solid var(--accent-primary);
+  border-radius: 30px;
+  color: var(--text-main);
+  letter-spacing: 1px;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: ease 0.5s;
   text-decoration: none;
-  font-weight: bold;
+}
+
+.pdf-button:hover {
+  transform: scale(1.05);
+  background: var(--accent-primary);
+  border: 2px solid var(--accent-primary);
+  color: var(--bg-main);
 }
 
 /* =========================
