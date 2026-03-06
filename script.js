@@ -2,12 +2,13 @@ const toggle = document.getElementById('themeToggle');
 const DARK_CLASS = 'dark';
 
 function setDarkMode(isDark) {
-  if (!toggle) return;
   if (isDark) document.body.classList.add(DARK_CLASS);
   else document.body.classList.remove(DARK_CLASS);
 
   // update button icon
-  toggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+  if (toggle) {
+    toggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+  }
 
   // persist
   try { localStorage.setItem('darkMode', isDark ? '1' : '0'); } catch (e) {}
