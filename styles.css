@@ -542,8 +542,11 @@ body.dark .logo img {
 .hero-logos {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+  row-gap: 0.9rem;
   gap: 1rem;
   margin-top: 1.25rem;
+  max-width: 100%;
 }
 
 .hero-logos img {
@@ -551,6 +554,7 @@ body.dark .logo img {
   width: auto;
   display: block;
   opacity: 0.95;
+  flex: 0 0 auto;
 }
 
 
@@ -560,7 +564,7 @@ body.dark .logo img {
 .button-container {
   display: flex;
   justify-content: flex-start;
-  margin: 1.5rem 0;
+  margin: 1rem 0 1.5rem;
 }
 
 .download-btn {
