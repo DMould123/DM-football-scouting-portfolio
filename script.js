@@ -40,11 +40,11 @@ const mainNavList = document.getElementById('mainNavList');
 function openNav() {
   if (!mainNav) return;
   mainNav.classList.add('open');
-  navToggle.setAttribute('aria-expanded', 'true');
+  if (navToggle) navToggle.setAttribute('aria-expanded', 'true');
   if (navOverlay) navOverlay.classList.add('visible');
   if (navOverlay) navOverlay.setAttribute('aria-hidden', 'false');
   // swap icon
-  navToggle.innerHTML = '<i class="fas fa-times"></i>';
+  if (navToggle) navToggle.innerHTML = '<i class="fas fa-times"></i>';
   // focus first link
   const firstLink = mainNavList?.querySelector('a');
   if (firstLink) firstLink.focus();
@@ -53,11 +53,11 @@ function openNav() {
 function closeNav() {
   if (!mainNav) return;
   mainNav.classList.remove('open');
-  navToggle.setAttribute('aria-expanded', 'false');
+  if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
   if (navOverlay) navOverlay.classList.remove('visible');
   if (navOverlay) navOverlay.setAttribute('aria-hidden', 'true');
-  navToggle.innerHTML = '<i class="fas fa-bars"></i>';
-  navToggle.focus();
+  if (navToggle) navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+  if (navToggle) navToggle.focus();
 }
 
 if (navToggle) {
