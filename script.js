@@ -148,7 +148,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // Typewriter effect for hero mission
   const typewriterElement = document.querySelector('.typewriter-animation');
   if (typewriterElement) {
-    const text = typewriterElement.getAttribute('data-typewriter');
+    const text = typewriterElement.getAttribute('data-typewriter') || '';
+    if (!text) return;
     typewriterElement.textContent = '';
     
     const cursor = document.createElement('span');
