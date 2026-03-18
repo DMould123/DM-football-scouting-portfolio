@@ -534,11 +534,13 @@ body.dark .logo img {
   background: var(--text-main);
   font-size: 22px;
   color: var(--bg-main);
+  text-decoration: none;
   transition: transform 0.5s ease, background 0.5s ease;
 }
 
 .social-links a:hover {
   transform: scale(1.1);
+  text-decoration: none;
 }
 
 @media (max-width: 980px) {
