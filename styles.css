@@ -27,7 +27,7 @@ html {
   --hero-bg: var(--bg-main);
   --hero-text: var(--text-main);
   --hero-subtext: var(--text-muted);
-  --accent-report: #e04430;
+  --accent-report: var(--accent-primary);
   --focus-ring: #0ea5e9;
   --font-body: "Manrope", Arial, Helvetica, sans-serif;
   --font-display: "Sora", Arial, Helvetica, sans-serif;
@@ -47,7 +47,7 @@ body.dark {
   --hero-bg: var(--bg-main);
   --hero-text: var(--text-main);
   --hero-subtext: var(--text-muted);
-  --accent-report: #ff6b5c;
+  --accent-report: var(--accent-primary);
 }
 
 /* =========================
