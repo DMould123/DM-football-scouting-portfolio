@@ -18,14 +18,14 @@ if (toggle) {
   toggle.addEventListener('click', () => {
     setDarkMode(!document.body.classList.contains(DARK_CLASS));
   });
-
-  // initial state: saved preference or system preference
-  let saved = null;
-  try { saved = localStorage.getItem('darkMode'); } catch (e) {}
-  if (saved === '1') setDarkMode(true);
-  else if (saved === '0') setDarkMode(false);
-  else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) setDarkMode(true);
 }
+
+// initial state: saved preference or system preference
+let saved = null;
+try { saved = localStorage.getItem('darkMode'); } catch (e) {}
+if (saved === '1') setDarkMode(true);
+else if (saved === '0') setDarkMode(false);
+else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) setDarkMode(true);
 
 // Add 'loaded' class to hero when page finishes loading
 window.addEventListener('load', () => {
@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
       easing: 'cubic-bezier(0.645, 0.045, 0.355, 1)',
       opacity: 0,
       scale: 0.95,
-      reset: true 
+      reset: false
     });
 
     // Reveal league cards with staggered timing

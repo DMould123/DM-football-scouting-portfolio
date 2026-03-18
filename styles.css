@@ -1,4 +1,6 @@
-﻿/* =========================
+﻿@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Sora:wght@600;700&display=swap");
+
+/* =========================
    RESET
 ========================= */
 * {
@@ -12,7 +14,7 @@ html {
 }
 
 /* =========================
-   DEFAULT THEME â€” INK WASH
+  DEFAULT THEME - INK WASH
 ========================= */
 :root {
   --bg-main: #f8fafc;
@@ -26,6 +28,9 @@ html {
   --hero-text: var(--text-main);
   --hero-subtext: var(--text-muted);
   --accent-report: #e04430;
+  --focus-ring: #0ea5e9;
+  --font-body: "Manrope", Arial, Helvetica, sans-serif;
+  --font-display: "Sora", Arial, Helvetica, sans-serif;
 }
 
 /* =========================
@@ -51,7 +56,7 @@ body.dark {
 body {
   background: var(--bg-main);
   color: var(--text-main);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
   line-height: 1.6;
   transition: background-color 0.25s ease, color 0.25s ease;
 }
@@ -67,14 +72,24 @@ body {
 }
 
 .section-alt {
-  background: var(--bg-alt);
+  background:
+    radial-gradient(circle at 20% 10%, rgba(31, 41, 55, 0.06), transparent 45%),
+    radial-gradient(circle at 80% 100%, rgba(224, 68, 48, 0.08), transparent 40%),
+    var(--bg-alt);
 }
 
 /* =========================
    TYPOGRAPHY
 ========================= */
 h1, h2, h3, h4 {
+  font-family: var(--font-display);
   font-weight: 600;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px;
 }
 
 h2 {
@@ -91,6 +106,18 @@ h2 {
   max-width: 600px;
   margin-bottom: 2rem;
   color: var(--text-muted);
+}
+
+.about-role {
+  margin: 1rem 0;
+}
+
+.about-highlight {
+  margin: 1.5rem 0;
+}
+
+.about-highlight-note {
+  margin-top: 0.5rem;
 }
 
 /* =========================
@@ -374,7 +401,10 @@ body.dark .logo img {
    HERO
 ========================= */
 .hero {
-  background: var(--hero-bg);
+  background:
+    radial-gradient(circle at 10% 20%, rgba(14, 165, 233, 0.12), transparent 40%),
+    radial-gradient(circle at 88% 18%, rgba(224, 68, 48, 0.12), transparent 35%),
+    var(--hero-bg);
   color: var(--hero-text);
   padding: 2rem 0;
   transition: background-color 0.25s ease, color 0.25s ease;
@@ -384,6 +414,16 @@ body.dark .logo img {
   min-height: 100vh;
   display: flex;
   align-items: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* reveal state after JS adds .loaded */
@@ -610,7 +650,9 @@ body.dark .logo img {
 @media (max-width: 768px) {
   .hero { padding: 2rem 0; min-height: auto; }
   .hero-name { font-size: 1.7rem; }
+  .hero-role { font-size: 1.05rem; line-height: 1.35; }
   .hero-tagline { font-size: 0.95rem; }
+  .hero-mission { font-size: 1rem; line-height: 1.55; }
   .hero-logos { gap: 0.8rem; }
   .hero-logos img { width: 72px; height: 35px; }
   h2 { font-size: 1.5rem; }
@@ -625,6 +667,7 @@ body.dark .logo img {
   .hero-right { flex: 0 0 auto; }
   .avatar-wrap { width: 200px; height: 280px; }
   .hero-name { font-size: 1.5rem; }
+  .hero-role { font-size: 0.92rem; line-height: 1.4; }
   .hero-tagline { font-size: 0.9rem; }
   .hero-mission { font-size: 0.9rem; }
   .hero-logos { gap: 0.6rem; }
