@@ -1181,7 +1181,7 @@ body.dark .logo img {
 }
 
 .skills-list li::before {
-  content: "â–¸";
+  content: "\2022";
   position: absolute;
   left: 0;
   color: var(--accent-primary);
@@ -1230,7 +1230,7 @@ body.dark .logo img {
 
 .tag {
   background: var(--accent-primary);
-  color: var(--accent-secondary);
+  color: #f8fafc;
   padding: 0.3rem 0.8rem;
   border-radius: 20px;
   font-size: 0.75rem;
