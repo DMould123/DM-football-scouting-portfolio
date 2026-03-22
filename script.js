@@ -85,38 +85,6 @@ document.querySelectorAll('#mainNavList a').forEach(a => {
   });
 });
 
-document.querySelectorAll('.pitch-instance').forEach(instance => {
-  const tpl = document.getElementById('pitch-template');
-  if (!tpl) return;
-
-  const clone = tpl.content.cloneNode(true);
-  const positionsGroup = clone.querySelector('.pitch-positions');
-
-  const positions = (instance.dataset.positions || '')
-    .split(',')
-    .map(p => p.trim());
-
-  const coords = {
-    LW: { x: 22, y: 80 },
-    RW: { x: 135, y: 80 },
-    CAM: { x: 85, y: 100 },
-    ST: { x: 85, y: 45 }
-  };
-
-  positions.forEach(pos => {
-    if (!coords[pos]) return;
-
-    const t = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-    t.setAttribute('x', coords[pos].x);
-    t.setAttribute('y', coords[pos].y);
-    t.setAttribute('class', 'pitch-label');
-    t.textContent = pos;
-    positionsGroup.appendChild(t);
-  });
-
-  instance.appendChild(clone);
-});
-
 // ScrollReveal initialization - runs when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
   if (typeof ScrollReveal !== 'undefined') {

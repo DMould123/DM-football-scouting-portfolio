@@ -1118,12 +1118,6 @@ body.dark .logo img {
    ANIMATION EXAMPLES (usable patterns)
    Add the matching `.visible` or `.loaded` class from JS
    to trigger these reveals. */
-.league-card.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-
 /* =========================
    CONTACT
 ========================= */
@@ -1406,24 +1400,6 @@ body.dark .logo img {
     grid-template-columns: 1fr;
   }
 }
-
-.pitch-bg {
-  fill: var(--pitch-bg);
-}
-
-.pitch-line {
-  stroke: var(--pitch-mark);
-  stroke-width: 1;
-}
-
-.pitch-line.thick {
-  stroke-width: 1.5;
-}
-
-.pitch-mark {
-  fill: var(--pitch-mark);
-}
-
 
 /* =========================
    FOOTER
