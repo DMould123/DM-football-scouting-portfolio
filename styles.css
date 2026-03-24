@@ -246,7 +246,9 @@ body.dark .logo img {
   display: none;
 }
 
-/* Mobile behaviour */
+/* -------------------------
+  MOBILE NAV BEHAVIOUR
+  ------------------------- */
 @media (max-width: 980px) {
   .nav-toggle { display: inline-flex; }
   .nav .logo { 
@@ -646,7 +648,9 @@ body.dark .logo img {
   color: var(--text-main);
 }
 
-/* Responsive: stack on smaller screens */
+/* -------------------------
+  HERO RESPONSIVE (TABLET)
+  ------------------------- */
 @media (max-width: 980px) {
   .hero-inner { flex-direction: column-reverse; text-align: center; padding: 2rem 0; }
   .hero-right { margin-bottom: 1.5rem; }
@@ -1068,7 +1072,9 @@ body.dark .logo img {
   }
 }
 
-/* Pitch */
+/* -------------------------
+  PITCH VISUAL BLOCK
+  ------------------------- */
 
 
 .pitch-small {
@@ -1441,8 +1447,8 @@ body.dark .logo img {
 }
 
 /* =========================
-   RESPONSIVE: REPORTS + NAV TWEAKS
-   ------------------------- */
+  RESPONSIVE: REPORTS + NAV TWEAKS
+========================= */
 @media (max-width: 880px) {
   .player-header {
     display: block;
