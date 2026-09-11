@@ -1,7 +1,7 @@
 const toggle = document.getElementById('themeToggle');
 const DARK_CLASS = 'dark';
 
-function setDarkMode(isDark) {
+function setDarkMode(isDark, persist = true) {
   if (isDark) document.body.classList.add(DARK_CLASS);
   else document.body.classList.remove(DARK_CLASS);
 
@@ -12,8 +12,9 @@ function setDarkMode(isDark) {
     toggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
   }
 
-  // persist
-  try { localStorage.setItem('darkMode', isDark ? '1' : '0'); } catch (e) {}
+  if (persist) {
+    try { localStorage.setItem('darkMode', isDark ? '1' : '0'); } catch (e) {}
+  }
 }
 
 if (toggle) {
@@ -27,7 +28,10 @@ let saved = null;
 try { saved = localStorage.getItem('darkMode'); } catch (e) {}
 if (saved === '1') setDarkMode(true);
 else if (saved === '0') setDarkMode(false);
-else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) setDarkMode(true);
+else setDarkMode(
+  window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches,
+  false
+);
 
 // Add 'loaded' class to hero when page finishes loading
 window.addEventListener('load', () => {
@@ -54,7 +58,7 @@ function openNav() {
 }
 
 function closeNav() {
-  if (!mainNav) return;
+  if (!mainNav || !mainNav.classList.contains('open')) return;
   mainNav.classList.remove('open');
   if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
   if (navOverlay) navOverlay.classList.remove('visible');
@@ -121,6 +125,12 @@ document.addEventListener('DOMContentLoaded', () => {
   if (typewriterElement) {
     const text = typewriterElement.getAttribute('data-typewriter') || '';
     if (!text) return;
+
+    if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) {
+      typewriterElement.textContent = text;
+      return;
+    }
+
     typewriterElement.textContent = '';
     
     const cursor = document.createElement('span');
